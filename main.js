@@ -6,7 +6,7 @@ const I2C_ADDR = 0x3f
 
 const lcdConnection = new I2CLCDConnection(1, I2C_ADDR, 16, 2)
 
-const button = new Gpio(21, 'in', 'rising')
+const button = new Gpio(21, 'in', 'rising', { debounceTimeout: 100 })
 
 class View {
   /**
