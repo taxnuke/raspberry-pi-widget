@@ -8,7 +8,22 @@ const lcdConnection = new I2CLCDConnection(1, I2C_ADDR, 16, 2)
 
 const button = new Gpio(21, 'in', 'rising')
 
+class View {
+  /**
+   * @param {String} heading
+   * @param {Model} model
+   */
+  constructor(heading, model) {
+    this.heading = heading
+    this.model = model
+  }
+}
+
 class Screen {
+  /**
+   * @param {I2CLCDConnection} lcd
+   * @param {Array<View>} views
+   */
   constructor(lcd, views) {
     this.lcd = lcd
 
@@ -43,14 +58,10 @@ class Screen {
   }
 }
 
-class View {
-  constructor(heading, model) {
-    this.heading = heading
-    this.model = model
-  }
-}
-
 class Model {
+  /**
+   * @param {any} initialData - should overload toString() if it is complex
+   */
   constructor(initialData = null) {
     this._data = initialData
     this._onUpdateHandlers = []

@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "tape *.test.js | tnyan"
+  },
+  "devDependencies": {
+    "tap-nyan": "^1.1.0",
+    "tape": "^4.9.2"
+  }
+}
