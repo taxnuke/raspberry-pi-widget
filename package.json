@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "test": "tape *.test.js | tnyan"
+    "test": "tape *.test.js | tnyan",
+    "deploy": "pm2 deploy raspberry"
   },
   "devDependencies": {
     "tap-nyan": "^1.1.0",
