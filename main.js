@@ -109,11 +109,7 @@ function updateWeather() {
     })
 }
 
-const greetModel = new Model('')
-
-setInterval(() => {
-  greetModel.data = '^'.repeat(16)
-}, 3000)
+const greetModel = new Model('^'.repeat(16))
 
 const screen = new Screen(lcdConnection, [
   new View('Weather (C)', weatherModel),
