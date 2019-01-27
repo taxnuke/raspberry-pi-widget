@@ -62,7 +62,7 @@ class Model {
   /**
    * @param {any} initialData - should overload toString() if it is complex
    */
-  constructor(initialData = null) {
+  constructor(initialData = '') {
     this._data = initialData
     this._onUpdateHandlers = []
   }
