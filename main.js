@@ -94,6 +94,19 @@ const weatherModel = new Model('Hold on...')
 updateWeather()
 setInterval(updateWeather, 60000 * 5)
 
+const timeModel = new Model()
+setInterval(() => {
+  const currentDate = new Date()
+  timeModel.data = currentDate.getHours() + ':' + currentDate.getMinutes()
+}, 60000)
+
+const screen = new Screen(lcdConnection, [
+  new View('Weather (C)', weatherModel),
+  new View('Time', timeModel)
+])
+
+button.watch(screen.nextView.bind(screen))
+
 function updateWeather() {
   const host = 'https://api.darksky.net'
   const apiKey = process.env.DARKSKY_KEY
@@ -108,12 +121,3 @@ function updateWeather() {
       console.error(error)
     })
 }
-
-const greetModel = new Model('^'.repeat(16))
-
-const screen = new Screen(lcdConnection, [
-  new View('Weather (C)', weatherModel),
-  new View('Have a nice day!', greetModel)
-])
-
-button.watch(screen.nextView.bind(screen))
